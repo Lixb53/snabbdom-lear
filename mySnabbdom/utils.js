@@ -39,7 +39,8 @@ export function createKeyToOldIdx(
 ) {
     const map = {}
     for(let i = beginIdx; i <= endIdx; ++i) {
-        const key = children[i].key;
+        const key = children[i] && children[i].key;
+        console.log(key !== 'undefined','@@@@')
         if(key !== undefined) {
             map[key] = i
         }

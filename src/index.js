@@ -60,11 +60,12 @@ const vnode6 = h('ul', {}, [
 
 patch(container, vnode)
 
-let vnodeList = [vnode2, vnode3, vnode4, vnode5, vnode6]
+let vnodeList = [ vnode2, vnode3, vnode4, vnode5, vnode6 ]
+let curVnode = vnode
 const btns = document.getElementsByClassName('btns');
-console.log(btns)
 btns[0].addEventListener('click', (e) =>  {
     if(e.target.tagName !== 'BUTTON') return;
     let idx = e.target.dataset.idx
-    patch(vnode, vnodeList[idx])
+    patch(curVnode, vnodeList[idx])
+    curVnode = vnodeList[idx]
 })

@@ -20,6 +20,7 @@ export default function updateChildren(parentElm, oldCh, newCh) {
     let before;
 
     while(newStartIdx <= newEndIdx && oldStartIdx <= oldEndIdx) {
+        debugger;
         console.log('----进入diff----', oldCh, newCh)
         // 这里还得调用patchVnode
         // patchVnode和updateChildren是互相调用的关系
@@ -71,6 +72,7 @@ export default function updateChildren(parentElm, oldCh, newCh) {
         }
         // 4. 旧后 和 新前
         else if(sameVnode(oldEndVnode, newStartVnode)) {
+            // debugger;
             console.log('4命中-旧后和新前-')
             // 调用patchVnode对比两个节点的 对象 文本 children
             patchVnode(oldEndVnode, newStartVnode)
@@ -161,7 +163,7 @@ export default function updateChildren(parentElm, oldCh, newCh) {
             console.log('删除 旧前 和 旧后 之间的节点')
             for(let i = oldStartIdx; i <= oldEndIdx; i++) {
                 // 删除剩余节之前, 先判断是否存在
-                if(oldCh[i].elm) {
+                if(oldCh[i] && oldCh[i].elm) {
                     console.log(oldCh[i].elm)
                     parentElm.removeChild(oldCh[i].elm)
                 }
