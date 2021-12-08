@@ -20,8 +20,7 @@ export default function updateChildren(parentElm, oldCh, newCh) {
     let before;
 
     while(newStartIdx <= newEndIdx && oldStartIdx <= oldEndIdx) {
-        debugger;
-        console.log('----进入diff----', oldCh, newCh)
+        console.log('----进入diff----')
         // 这里还得调用patchVnode
         // patchVnode和updateChildren是互相调用的关系
         // 指针走完后就不会再调用
@@ -122,7 +121,6 @@ export default function updateChildren(parentElm, oldCh, newCh) {
                         oldStartVnode.elm
                     )
                 } else {
-                    console.log(elmToMove, newStartVnode)
                     // 调用patchVnode进行对比, 修改
                     patchVnode(elmToMove, newStartVnode)
                     // 将这一项设为undefined
