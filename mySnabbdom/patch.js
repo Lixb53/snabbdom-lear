@@ -12,6 +12,8 @@ import patchVnode from "./patchVNode"
 
 
 export default function patch(oldVnode, newVnode) {
+    let i, elm, parent;
+    const insertedVnodeQueue = [];
     // 1. 判断oldVnode是不是虚拟节点
     if(!oldVnode.sel) {
         oldVnode = emptyNodeAt(oldVnode)
@@ -24,8 +26,8 @@ export default function patch(oldVnode, newVnode) {
 
     } else {
         // 不是同一个虚拟节点, 暴力插入新的, 删除旧的
-        let elm = oldVnode.elm,
-            parent = api.parentNode(elm);
+        elm = oldVnode.elm
+        parent = api.parentNode(elm);
         
         createElm(newVnode)
         if(parent !== null) {
@@ -35,6 +37,7 @@ export default function patch(oldVnode, newVnode) {
         }
     }
 
+    console.log(insertedVnodeQueue,'insertedVnodeQueue----patch')
     // 返回newVnode作为 旧的虚拟节点
     return newVnode
 }
